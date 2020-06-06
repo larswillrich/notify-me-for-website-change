@@ -3,6 +3,7 @@ import time
 import requests
 import json
 from sendMail import sendmail 
+import datetime
 
 session = requests.session()
 
@@ -23,6 +24,8 @@ def isAvailable(text):
 
 while True:
 
+    print(datetime.datetime.now())
+
     r = session.get("http://httpbin.org/ip" )
     print(r.text)
 
@@ -36,3 +39,4 @@ while True:
             print("Oops! Try again next time")
 
         time.sleep(5)
+    time.sleep(40)
