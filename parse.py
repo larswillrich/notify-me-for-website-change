@@ -4,8 +4,10 @@ import requests
 import json
 from sendMail import sendmail 
 import datetime
+from pytz import timezone
 
 session = requests.session()
+found = False
 
 with open('config.json') as f:
   data = json.load(f)
@@ -21,10 +23,12 @@ def isAvailable(text):
         if data['search']['contains'] in str(snippet):
             sendmail(data['smtp'])
             print("WUHUUU:")
+            return True
+    return False
 
-while True:
+while not found:
 
-    print(datetime.datetime.now())
+    print(datetime.datetime.now(timezone('Europe/Berlin')))
 
     r = session.get("http://httpbin.org/ip" )
     print(r.text)
@@ -34,9 +38,9 @@ while True:
         
         try:
             response = session.get(url)
-            isAvailable(response.text)
-        except Exception:
-            print("Oops! Try again next time")
+            found = isAvailable(response.text)
+        except Exception as exc:
+            print("Oops! Try again next time. {0}".format(exc))
 
         time.sleep(5)
     time.sleep(40)
