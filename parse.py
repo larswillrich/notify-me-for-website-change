@@ -21,7 +21,7 @@ def isAvailable(text):
     soup = BeautifulSoup(text, 'html.parser')
     for snippet in soup.find_all(attrs={data['search']['attr']['Name'] : data['search']['attr']['Value'] }):
         if data['search']['contains'] in str(snippet):
-            sendmail(data['smtp'])
+            sendmail(data['smtp'], str(snippet))
             print("WUHUUU:")
             return True
     return False
@@ -39,6 +39,7 @@ while not found:
         try:
             response = session.get(url)
             found = isAvailable(response.text)
+            print("response code: {}".format(response.status_code))
         except Exception as exc:
             print("Oops! Try again next time. {0}".format(exc))
 

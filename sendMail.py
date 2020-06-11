@@ -1,7 +1,7 @@
 import smtplib, ssl
 import os
 
-def sendmail(smtp):
+def sendmail(smtp, content):
     port = 465  # For SSL
     smtp_server = smtp['endpoint']
     sender_email = smtp['senderEmail']
