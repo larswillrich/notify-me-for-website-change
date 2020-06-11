@@ -7,4 +7,4 @@ echo "LearnCircuitBuildTimeout 0">>/etc/tor/torrc
 echo "MaxCircuitDirtiness 10">>/etc/tor/torrc
 
 tor &
-python3 parse.py
+python3 runLocallyWithTor.py
