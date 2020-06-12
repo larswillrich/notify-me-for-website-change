@@ -1,13 +1,13 @@
 import smtplib, ssl
 import os
 
-def sendmail(smtp, content):
+def sendmail(smtp, content, url):
     port = 465  # For SSL
     smtp_server = smtp['endpoint']
     sender_email = smtp['senderEmail']
     receiver_email = smtp['receiverEmail']
     password = smtp['password']
-    message = smtp['message']
+    message = "Subject: {}\n{}\nURL: {}".format(smtp['message'], content, url)
 
     context = ssl.create_default_context()
 

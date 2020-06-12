@@ -9,5 +9,6 @@ zip -r9 lambda_function_payload.zip .
 zip -g lambda_function_payload.zip ../runInLambda.py
 zip -g lambda_function_payload.zip ../sendMail.py
 zip -g lambda_function_payload.zip ../config.json
+zip -g lambda_function_payload.zip ../search.py
 cd ..
 terraform apply
