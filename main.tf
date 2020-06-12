@@ -17,7 +17,7 @@ terraform {
 resource "aws_cloudwatch_event_rule" "every_one_minute" {
   name                = "every-one-minute"
   description         = "Fires every one minutes"
-  schedule_expression = "rate(6 hours)"
+  schedule_expression = "rate(2 hours)"
 }
 
 resource "aws_cloudwatch_event_target" "check_foo_every_one_minute" {
